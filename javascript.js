@@ -1,4 +1,4 @@
-function rockPaperScissors(handSign) {
+let computerSelection = () => {
     // A Random number generator with a switch statement to assign the random number to a word.
     let ai = Math.floor(Math.random() * 3);
     switch (ai) {
@@ -12,26 +12,32 @@ function rockPaperScissors(handSign) {
             ai = "Scissors"
             break;    
     }
+    return ai
+};
 
-    //////// Coverts string to lower case and then Capitalize the first character, and re-adding the rest of the string
-    handSign = handSign.toLowerCase()
-    handSign = handSign.charAt(0).toUpperCase() + handSign.slice(1)
-    ////////
+//////// Coverts string to lower case and then Capitalize the first character, and re-adding the rest of the string
+let playerSelection = () => {
+    userInput = prompt("What is your choice?\nRock, Paper, Or Scissors", "")
+    userInput = userInput.toLowerCase()
+    userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1)
+    return userInput
+};
 
-    // Actual 'Game' portion, does a series of if statements to determine if the player won or loss.
-    if (handSign !== "Rock" && handSign !== "Paper" && handSign !== "Scissors") {
-        return `Error! ${handSign} is an invalid input!`
-    }else if (handSign === "Rock" && ai === "Scissors") {
-        return `You win! You chose ${handSign}. And the AI chose ${ai}.`
-    }else if (handSign === "Paper" && ai === "Rock") {
-        return `You win! You chose ${handSign}. And the AI chose ${ai}.`
-    } else if (handSign === "Scissors" && ai === "Paper") {
-     return `You win! You chose ${handSign}. And the AI chose ${ai}.`
-    } else if (handSign === ai) {
-        return `Its a tie! You chose ${handSign}. And the AI chose ${ai}.`
+function playGame(playerSelection, computerSelection) {
+       // Actual 'Game' portion, does a series of if statements to determine if the player won or loss.
+    if (playerSelection !== "Rock" && playerSelection !== "Paper" && playerSelection !== "Scissors") {
+        return `Error! ${playerSelection} is an invalid input!`
+    }else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        return `You win! You chose ${playerSelection}. And the AI chose ${computerSelection}.`
+    }else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        return `You win! You chose ${playerSelection}. And the AI chose ${computerSelection}.`
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+     return `You win! You chose ${playerSelection}. And the AI chose ${computerSelection}.`
+    } else if (playerSelection === computerSelection) {
+        return `Its a tie! You chose ${playerSelection}. And the AI chose ${computerSelection}.`
     }else {
-        return `"You lose! You chose ${handSign}. And the AI chose ${ai}.`
+        return `"You lose! You chose ${playerSelection}. And the AI chose ${computerSelection}.`
     }
 }
 
-console.log(rockPaperScissors("rOck"))
+alert(playGame(playerSelection(), computerSelection()))
