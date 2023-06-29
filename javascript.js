@@ -1,4 +1,5 @@
 function rockPaperScissors(handSign) {
+    // A Random number generator with a switch statement to assign the random number to a word.
     let ai = Math.floor(Math.random() * 3);
     switch (ai) {
         case 0:
@@ -11,8 +12,13 @@ function rockPaperScissors(handSign) {
             ai = "Scissors"
             break;    
     }
-    handSign = handSign.charAt(0).toUpperCase() + handSign.slice(1)
 
+    //////// Coverts string to lower case and then Capitalize the first character, and re-adding the rest of the string
+    handSign = handSign.toLowerCase()
+    handSign = handSign.charAt(0).toUpperCase() + handSign.slice(1)
+    ////////
+
+    // Actual 'Game' portion, does a series of if statements to determine if the player won or loss.
     if (handSign !== "Rock" && handSign !== "Paper" && handSign !== "Scissors") {
         return `Error! ${handSign} is an invalid input!`
     }else if (handSign === "Rock" && ai === "Scissors") {
@@ -28,4 +34,4 @@ function rockPaperScissors(handSign) {
     }
 }
 
-console.log(rockPaperScissors("rock"))
+console.log(rockPaperScissors("rOck"))
