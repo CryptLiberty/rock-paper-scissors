@@ -11,6 +11,8 @@ function rockPaperScissors(handSign) {
             ai = "Scissors"
             break;    
     }
+    handSign = handSign.charAt(0).toUpperCase() + handSign.slice(1)
+
     if (handSign !== "Rock" && handSign !== "Paper" && handSign !== "Scissors") {
         return `Error! ${handSign} is an invalid input!`
     }else if (handSign === "Rock" && ai === "Scissors") {
@@ -26,4 +28,4 @@ function rockPaperScissors(handSign) {
     }
 }
 
-console.log(rockPaperScissors(1))
+console.log(rockPaperScissors("rock"))
